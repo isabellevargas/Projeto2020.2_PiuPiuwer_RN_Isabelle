@@ -45,17 +45,6 @@ export const AuthProvider: React.FC = ( { children }) => {
         carregarDadosUsuario();
 
     }, [])
-  /*const [data, setData] = useState<AuthState>(() => {
-    const user = AsyncStorage.getItem("@Piupiuwer::user");
-    const token = AsyncStorage.getItem("@Piupiuwer::token");
-
-    if (user && token) {
-      api.defaults.headers.Authorization = `JWT ${token}`;
-      return { user: JSON.parse(user), token };
-    }
-
-    return {} as AuthState;
-  });*/
 
   const login = useCallback(async ({ username, password }: LoginCred) => {
     try {
