@@ -5,9 +5,8 @@ import React, {
     useCallback,
     useEffect,
   } from "react";
-  import homeIcon from "../../assets/images/023-home.png";
+  import homeIcon from "../../assets/images/home.png";
   import { Wrapper, IconHome, BarraSuperior, TitleHome, Forms, FormsTitle, InputPiu, Botao, Frases, Actions, ButtonText } from "./styles";
-  import api from "../../services/api";
   import { useLoad } from "../../hooks/useLoad";
   import { useAuth } from "../../hooks/useAuth";
   
@@ -17,6 +16,7 @@ import React, {
     const [botao, setBotao] = useState(true);
     const [textoPiu, setTextoPiu] = useState("");
     const [change, setChange] = useState(false);
+
   
     const { carregarDados } = useLoad();
     const { user } = useAuth();
@@ -25,7 +25,7 @@ import React, {
       carregarDados();
     }, [change, carregarDados]);
   
-    function handleChange(texto: string) {
+    const handleChange = useCallback((texto: string) => {
   
       setContador(texto.length + "/140");
       setTextoPiu(texto);
@@ -40,16 +40,20 @@ import React, {
         setFraseErro("");
         setBotao(true);
       }
-    }
+    },
+    [textoPiu]
+  );
   
     const handleSubmit = useCallback(
       async () => {
-  
+        
         const userId = user.id;
         const mensagem = textoPiu;
+        console.log(userId, mensagem);
   
-        await api.post("/pius/", { usuario: userId, texto: mensagem });
-        setChange(!change);
+        /*await api.post("/pius/", { usuario: userId, texto: mensagem });
+        
+        setChange(!change);*/
       },
       [textoPiu, user.id, change]
     );
@@ -75,8 +79,8 @@ import React, {
             <Frases  livre={botao}>
               {contador}
             </Frases>
-            <Botao  title='Entrar'livre={botao} disabled={!botao} onPress={handleSubmit}>
-                <ButtonText>Entrar</ButtonText>
+            <Botao livre={botao} disabled={!botao} onPress={handleSubmit}>
+                <ButtonText>Piar</ButtonText>
             </Botao>
           </Actions>
         </Forms>

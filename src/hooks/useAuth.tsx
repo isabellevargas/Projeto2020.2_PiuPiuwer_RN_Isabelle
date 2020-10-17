@@ -72,7 +72,7 @@ export const AuthProvider: React.FC = ( { children }) => {
             "Impossível fazer login com as credenciais fornecidas."
         )
           return "Atenção: Usuário e senha não existem";
-        if (
+        /*if (
           data.username !== undefined &&
           data.username[0] === "Este campo não pode ser em branco."
         )
@@ -81,7 +81,7 @@ export const AuthProvider: React.FC = ( { children }) => {
           data.password !== undefined &&
           data.password[0] === "Este campo não pode ser em branco."
         )
-          return "Atenção: Senha em branco";
+          return "Atenção: Senha em branco";*/
       }
     }
   }, []);

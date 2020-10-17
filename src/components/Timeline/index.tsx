@@ -3,6 +3,7 @@ import TypePiu from "../TypePiu";
 import Piu, { PiuItem } from "../Piu";
 import { Wrapper, Pius, Background } from "./styles";
 import { useLoad } from "../../hooks/useLoad";
+import { ScrollView } from 'react-native';
 
 const Timeline: React.FC = () => {
   const [dadosTimeline, setDadosTimeline] = useState<PiuItem[]>([]);
@@ -12,7 +13,7 @@ const Timeline: React.FC = () => {
   }, [pius]);
 
   return (
-    <>
+    <ScrollView>
       <Wrapper>
         <TypePiu />
         <Pius>
@@ -23,7 +24,7 @@ const Timeline: React.FC = () => {
         </Pius>
       </Wrapper>
       <Background />
-    </>
+      </ScrollView>
   );
 };
 

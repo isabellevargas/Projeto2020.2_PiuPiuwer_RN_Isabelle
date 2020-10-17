@@ -1,11 +1,13 @@
 import styled from "styled-components/native";
 
 export const WrapperComponent = styled.View`
-  /*border: 0 0 1px 0 solid rgba(200, 121, 168, 0.73);*/
+  border-bottom-color:rgba(200, 121, 168, 0.73);
+  border-bottom-width: 1px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  flex-wrap: wrap;
 `;
 
 export const PiuComponents = styled.View`
@@ -19,61 +21,63 @@ export const PiuComponents = styled.View`
 export const InteractionsComponent = styled.View`
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-bottom: 17px;
 `;
 
 export const LikeComponent = styled.View`
     display: flex;
+    flex-direction: row;
     align-items: center;
 `;
 
 export const LikeText = styled.Text`
     text-decoration: none;
     color: #b164ae;
-    font-size: 8px;
+    font-size: 12px;
     padding-top: 8px;
 `;
 
 export const InteractionImage = styled.Image`
-    width: 10px;
-    height: 10px;
-    margin: 10px 5px 0 10px;
+    width: 18px;
+    height: 18px;
+    margin: 15px 10px 0 15px;
 `;
 
 export const DataComponent = styled.View`
   display: flex;
+  flex-direction: row;
 `;
 
 export const UserImage = styled.Image`
-    object-fit: cover;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    resizeMode: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
 `;
 
 export const UserData = styled.View`
-    margin-left: 8px;
+    margin-left: 15px;
+    margin-right: 20px;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 `;
 
 export const Name = styled.Text`
-    font-size: 10px;
+    font-size: 17px;
     color: black;
 `;
 
 export const Username = styled.Text`
-    font-size: 8px;
+    font-size: 13px;
     font-weight: normal;
     color: black;
 `;
 
 export const PiuText = styled.Text`
-    font-size: 9px;
+    font-size: 15px;
     color: black;
-    margin-top: 3px;
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 7px;
     flex-shrink: 1;
     width: 100%;
 `;

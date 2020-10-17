@@ -5,54 +5,58 @@ export const Wrapper = styled.View`
 
 export const BarraSuperior = styled.View`
     display: flex;
+    flex-direction: row;
     align-items: center;
-    /*border: 0 0 1px 0 solid rgba(200, 121, 168, 0.73);*/
-    padding: 9px 10px;
+    border-bottom-color:rgba(200, 121, 168, 0.73);
+    border-bottom-width: 1px;
+    padding: 50px 5px 10px 20px;
 `;
 
 export const IconHome = styled.Image`
-    width: 13px;
-    height: 13px;
+    width: 25px;
+    height: 25px;
     margin-right: 10px;
 `;
 
 export const TitleHome = styled.Text`
-    font-size: 12px;
+    font-size: 20px;
 `;
 
 export const Forms = styled.View`
     display: flex;
     flex-direction: column;
-    margin: 13px;
-    margin-bottom: 0;
-    /*border: 0 0 1px 0 solid rgba(200, 121, 168, 0.73);*/
+    margin: 5px 17px 10px 20px;
+    border-bottom-color:rgba(200, 121, 168, 0.73);
+    border-bottom-width: 1px;
 `;
 
 export const FormsTitle = styled.Text`
-    font-size: 10px;
-    margin-bottom: 10px;
+    font-size: 18px;
+    padding: 0 0 10px 0;
 `;
 
 export const InputPiu = styled.TextInput`
-    height: 70px;
-    margin-bottom: 10px;
+    height: 120px;
+    width: 300px;
+    margin-bottom: 5px;
     border-radius: 25px;
     border: 1px solid rgba(0, 0, 0, 0.28);
     padding-left: 10px;
-    padding-left: 10px;
-    padding-top: 5px;
+    padding-top: 10px;
+    textAlignVertical: top;
 `;
 
   export const Actions = styled.View`
     align-self: flex-end;
     display: flex;
     align-items: center;
+    padding-right: 35px;
 `;
 
-export const Botao = styled.Button<{ livre: boolean }>`
-  width: 60px;
-  height: 18px;
-  margin-bottom: 10px;
+export const Botao = styled.TouchableOpacity<{ livre: boolean }>`
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
   background-color: #7cc1db;
   border-radius: 25px;
   border: 1px solid #7cc1db;
@@ -61,14 +65,14 @@ export const Botao = styled.Button<{ livre: boolean }>`
 `;
 
 export const ButtonText = styled.Text`
-font-size: 10px;
-color: #ffffff;
+  font-size: 15px;
+  color: #ffffff;
+  padding: 2px 0px 0px 30px;
 `;
 
-
 export const Frases = styled.Text<{ livre: boolean }>`
-  font-size: 8px;
-  margin-bottom: 5px;
-  padding: 8px;
+  font-size: 13px;
+  padding-bottom: 10px;
   color: ${(props) => (props.livre ? "black" : "red")};
+  align-self: flex-end;
 `;

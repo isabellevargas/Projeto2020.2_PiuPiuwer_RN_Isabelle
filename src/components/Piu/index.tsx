@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import like from "../../assets/images/003-favourite 1.png";
-import deletar from "../../assets/images/delete 2.png";
+import like from "../../assets/images/favourite.png";
+import deletar from "../../assets/images/delete.png";
 import {
   WrapperComponent,
   InteractionsComponent,
@@ -39,7 +39,7 @@ const Piu: React.FC<PiuItemProps> = ({ dados }) => {
 
   useEffect(() => {
     carregarDados();
-  }, [change]);
+  }, [change, carregarDados]);
 
   const handleDelete = useCallback(
     async () => {
@@ -47,7 +47,8 @@ const Piu: React.FC<PiuItemProps> = ({ dados }) => {
       const userId = user.id;
 
       if (dados.usuario.id === userId) {
-        await api.delete(`/pius/${piuId}`);
+        await api.delete(`/pius/${piuId}/`);
+        console.log(piuId);
       } else {
         alert("Você não pode excluir pius que não são seus");
       }
