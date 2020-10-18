@@ -6,14 +6,12 @@ import Login from '../pages/Login/index';
 
 const { Navigator, Screen } = createStackNavigator();
 
-const authRoute: React.FC = () => {
+const AuthRoute: React.FC = () => {
     return (
-        <NavigationContainer>
-            <Navigator screenOptions={{ headerShown: false }}>
-                <Screen name='login' component={Login}/>
-            </Navigator>
-        </NavigationContainer>
+        <Navigator screenOptions={{ headerShown: false }}>
+            <Screen name='login' component={Login}/>
+        </Navigator>
     );
 }
 
-export default authRoute;
+export default AuthRoute;

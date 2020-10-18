@@ -48,7 +48,6 @@ const Piu: React.FC<PiuItemProps> = ({ dados }) => {
 
       if (dados.usuario.id === userId) {
         await api.delete(`/pius/${piuId}/`);
-        console.log(piuId);
       } else {
         alert("Você não pode excluir pius que não são seus");
       }
@@ -78,7 +77,7 @@ const Piu: React.FC<PiuItemProps> = ({ dados }) => {
               {dados.usuario.first_name + " " + dados.usuario.last_name}
             </Name>
             <Username>{dados.usuario.username}</Username>
-            <PiuText>{dados.texto}</PiuText>
+            <PiuText numberOfLines={5}>{dados.texto}</PiuText>
           </UserData>
         </DataComponent>
         <InteractionsComponent>

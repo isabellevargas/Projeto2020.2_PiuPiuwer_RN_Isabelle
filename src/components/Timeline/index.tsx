@@ -13,7 +13,9 @@ const Timeline: React.FC = () => {
   }, [pius]);
 
   return (
-    <ScrollView>
+    <ScrollView
+      keyboardShouldPersistTaps='handled'
+    >
       <Wrapper>
         <TypePiu />
         <Pius>

@@ -7,7 +7,6 @@ export const WrapperComponent = styled.View`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  flex-wrap: wrap;
 `;
 
 export const PiuComponents = styled.View`
@@ -46,6 +45,7 @@ export const InteractionImage = styled.Image`
 export const DataComponent = styled.View`
   display: flex;
   flex-direction: row;
+  flex-shrink: 1;
 `;
 
 export const UserImage = styled.Image`
@@ -61,6 +61,7 @@ export const UserData = styled.View`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    flex: 1;
 `;
 
 export const Name = styled.Text`
@@ -78,6 +79,6 @@ export const PiuText = styled.Text`
     font-size: 15px;
     color: black;
     margin-top: 7px;
-    flex-shrink: 1;
     width: 100%;
 `;
+

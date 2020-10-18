@@ -1,16 +1,16 @@
 import React, { createContext, useContext, useState, useCallback, useEffect} from "react";
-import { AsyncStorage } from 'react-native'; 
+import AsyncStorage from '@react-native-community/async-storage'; 
 import api from "../services/api";
+import * as Yup from 'yup';
 
 interface AuthState {
   token: string;
   user: User;
 }
 
-interface AuthContextData {
-  user: User;
-  token: string;
-  login({ username, password }: LoginCred): Promise<string | undefined>;
+interface AuthContextData extends AuthState {
+  errorText: string;
+  login({ username, password }: LoginCred): Promise<void>;
   logout(): void;
 }
 
@@ -31,14 +31,15 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ( { children }) => {
     const [data, setData] = useState<AuthState>({} as AuthState);
+    const [errorText, setErrorText] = useState("");
 
     useEffect(() => {
         async function carregarDadosUsuario() {
             const [user, token] = await AsyncStorage.multiGet(['@Piupiuwer::user', '@Piupiuwer::token' ]);
 
-        if (user[0] && token[0]) {
-            api.defaults.headers.Authorization = `JWT ${token}`;
-            setData({ user: JSON.parse(user[0]), token: token[0] });
+        if (user[1] && token[1]) {
+            api.defaults.headers.Authorization = `JWT ${token[1]}`;
+            setData({ user: JSON.parse(user[1]), token: token[1] });
         }
         }
 
@@ -47,7 +48,14 @@ export const AuthProvider: React.FC = ( { children }) => {
     }, [])
 
   const login = useCallback(async ({ username, password }: LoginCred) => {
+    setErrorText("");
     try {
+      const esquema = Yup.object().shape({
+        username: Yup.string().required('Usuário obrigatório'),
+        password: Yup.string().required('Senha obrigatória'),
+      });
+      await esquema.validate({username, password}, { abortEarly: false });
+
       const response = await api.post("/login/", { username, password });
 
       const { token } = response.data;
@@ -63,6 +71,10 @@ export const AuthProvider: React.FC = ( { children }) => {
         setData({ user, token });
       }
     } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        setErrorText(err.message);
+        return;
+      }
       const { data } = err.response;
 
       if (err.response) {
@@ -71,17 +83,8 @@ export const AuthProvider: React.FC = ( { children }) => {
           data.global[0] ===
             "Impossível fazer login com as credenciais fornecidas."
         )
-          return "Atenção: Usuário e senha não existem";
-        /*if (
-          data.username !== undefined &&
-          data.username[0] === "Este campo não pode ser em branco."
-        )
-          return "Atenção: Usuário em branco";
-        if (
-          data.password !== undefined &&
-          data.password[0] === "Este campo não pode ser em branco."
-        )
-          return "Atenção: Senha em branco";*/
+        setErrorText("Atenção: Usuário e senha não existem");
+       
       }
     }
   }, []);
@@ -96,7 +99,7 @@ export const AuthProvider: React.FC = ( { children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, token: data.token, login, logout }}
+      value={{ ...data, errorText, login, logout }}
     >
       {children}
     </AuthContext.Provider>

@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const BlockComponent = styled.View`
   background-color: rgba(255, 255, 255, 0.5);
-  padding-top: 50px;
+  padding-top: 0px;
   padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;

@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import { useAuth } from "../../hooks/useAuth";
 import { View } from "react-native";
-import * as Yup from 'yup';
+
 
 
 const Box: React.FC = () => {
@@ -19,29 +19,16 @@ const Box: React.FC = () => {
     username: "",
     password: "",
   });
-  const [errorText, setErrorText] = useState<string | undefined>("");
+  
 
-  const { login } = useAuth();
+  const { login, errorText } = useAuth();
+
 
   const handleLogin = useCallback(
     async () => {
-      const dataToAPI = {
-        username: cred.username,
-        password: cred.password,
-      }
-      try {
-        const esquema = Yup.object().shape({
-          username: Yup.string().required('Usuário obrigatório'),
-          password: Yup.string().required('Senha obrigatória'),
-        });
-        await esquema.validate(dataToAPI, { abortEarly: false });
-        const erro = await login(cred);
-        setErrorText(erro);
-      } catch (err) {
-        setErrorText(err.message);
-      }
+        await login(cred);
     },
-    [cred, login, setErrorText]
+    [cred, login]
   );
 
 
@@ -72,6 +59,7 @@ const Box: React.FC = () => {
                 password: text,
               });
             }}
+            secureTextEntry
           ></Input>
         </View>
         <Span>{errorText}</Span>
