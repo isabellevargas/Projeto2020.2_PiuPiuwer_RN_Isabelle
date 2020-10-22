@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const BlockComponent = styled.View`
   background-color: rgba(255, 255, 255, 0.5);
-  padding-top: 0px;
+  padding-top: 50px;
   padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;
@@ -43,6 +43,7 @@ export const Input = styled.TextInput`
   border-width: 1px;
   border-radius: 20px;
   width: 300px;
+  height: 35px;
 
   margin-bottom: 20px;
   padding-left: 15px;
@@ -63,13 +64,15 @@ export const ButtonLogin = styled.TouchableOpacity`
   background-color: #b164ae;
   border-radius: 20px;
   
-  width: 80px;
-  height: 30px;
+  width: 110px;
+  height: 38px;
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
+  padding-top: 4px;
   color: white;
   text-align: center;
+  justify-content: center;
 `;
 

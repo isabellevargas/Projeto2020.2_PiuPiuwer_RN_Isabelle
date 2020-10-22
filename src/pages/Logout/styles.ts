@@ -26,12 +26,13 @@ export const ButtonLogout = styled.TouchableOpacity`
   background-color: #b164ae;
   border-radius: 20px;
   
-  width: 80px;
-  height: 30px;
+  width: 100px;
+  height: 35px;
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
+  padding-top: 2px;
   color: white;
   text-align: center;
 `;

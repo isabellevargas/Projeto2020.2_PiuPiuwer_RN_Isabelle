@@ -77,7 +77,7 @@ const Piu: React.FC<PiuItemProps> = ({ dados }) => {
               {dados.usuario.first_name + " " + dados.usuario.last_name}
             </Name>
             <Username>{dados.usuario.username}</Username>
-            <PiuText numberOfLines={5}>{dados.texto}</PiuText>
+            <PiuText numberOfLines={15}>{dados.texto}</PiuText>
           </UserData>
         </DataComponent>
         <InteractionsComponent>

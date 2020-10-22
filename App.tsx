@@ -1,7 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import Login from "./src/pages/Login";
 import AppProvider from "./src/hooks/index";
 import Routes from "./src/Routes/index";
 
@@ -13,8 +12,5 @@ export default function App() {
       <StatusBar style="auto" />
     </AppProvider>
     </SafeAreaView>
-    
-      
-
   );
 }

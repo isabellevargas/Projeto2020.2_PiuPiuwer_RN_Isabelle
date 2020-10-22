@@ -54,8 +54,8 @@ export const InputPiu = styled.TextInput`
 `;
 
 export const Botao = styled.TouchableOpacity<{ livre: boolean }>`
-  width: 100px;
-  height: 30px;
+  width: 110px;
+  height: 33px;
   margin-bottom: 20px;
   background-color: #7cc1db;
   border-radius: 25px;
@@ -65,9 +65,9 @@ export const Botao = styled.TouchableOpacity<{ livre: boolean }>`
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 15px;
+  font-size: 20px;
   color: #ffffff;
-  padding: 2px 0px 0px 30px;
+  padding: 2px 0px 0px 36px;
 `;
 
 export const Frases = styled.Text<{ livre: boolean }>`
